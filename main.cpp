@@ -31,6 +31,13 @@ int main(){
         case 4 :
 
         case 5 :
+            int titulo;
+            cout<<"Seleccione el titulo a calificar: "<<endl;
+            cin>>titulo;
+            cout<<"Cuantas estrellas le da? "<<endl;
+            cout<<"Rango: 1 - 5"<<endl;
+            cin>>respuesta;
+            #envia la respuesta
 
         case 0 : bandera = false;
 
