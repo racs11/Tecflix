@@ -20,3 +20,6 @@ void Serie:: Mostrar(){
 
 
 }
+int Serie::tipo(){
+    return 1;
+}

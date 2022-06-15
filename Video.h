@@ -8,7 +8,14 @@ class Video{
         int getID();
         string getNombre();
         float getDuracion();
+        virtual int tipo();
+        int operator+(int x){
+            int aux = (calificacion + x)/2;
 
+            return aux;
+
+        }
+        void setCalificacion(int c);
     private:
         int ID;
         string nombre;

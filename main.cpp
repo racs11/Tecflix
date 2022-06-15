@@ -1,5 +1,6 @@
 #include <iostream>
 #include<fstream>
+#include<typeinfo>
 
 #include "Video.cpp"
 #include "Serie.cpp"
@@ -24,17 +25,19 @@ int main(){
 
     while(bandera){
 
-    cout<<"1.Buscar por genero o calificación" <<endl;
-    cout<<"2.Buscar por calificación en serie"<<endl;
+    cout<<"1.Buscar videos por genero o calificación" <<endl;
+    cout<<"2.Buscar series por calificación"<<endl;
     cout<<"3.Buscar peliculas por calificacion"<<endl;
     cout<<"4.Calificar un video"<<endl;
     cout<<"0.Salir"<<endl;
     cin>>respuesta;
 
+
+
     switch(respuesta){
         case 1 :
 
-            cout<<"Buscar por calificacion o genero?"<<endl;
+            cout<<"Buscar videos por calificacion o genero?"<<endl;
             cout<<"1.calificacion 2.genero"<<endl;
             cin>>respuesta;
             if(respuesta == 1){
@@ -65,21 +68,61 @@ int main(){
             }
             break;
         case 2 :
+                cout<<"Seleccione la calificacion a buscar: "<<endl;
+                cout<<"Rango: 1-5"<<endl;
+                cin>>respuesta;
+                for(int i=0;i<3;i++){
+                    Video *actual = videos[i];
+                    if(actual->getCalificacion() == respuesta && actual->tipo() == 1 ){
+                            actual->Mostrar();
+                    }
+                }
+                cout<<" "<<endl;
 
-
+                break;
         case 3 :
-
-
+                cout<<"Seleccione la calificacion a buscar: "<<endl;
+                cout<<"Rango: 1-5"<<endl;
+                cin>>respuesta;
+                for(int i=0;i<3;i++){
+                    Video *actual = videos[i];
+                    if(actual->getCalificacion() == respuesta && actual->tipo() == 2){
+                            actual->Mostrar();
+                    }
+                }
+                cout<<" "<<endl;
+                break;
         case 4 :
+            {
+
+
             int titulo;
             cout<<"Seleccione el titulo a calificar: "<<endl;
+            for(int i=0;i<3;i++){
+                    Video *actual = videos[i];
+                    string nombre = actual->getNombre();
+                    cout<<i+1<<". "<<nombre<<endl;
+
+                }
             cin>>titulo;
             cout<<"Cuantas estrellas le da? "<<endl;
             cout<<"Rango: 1 - 5"<<endl;
             cin>>respuesta;
-            //envia la respuesta
+            Video v1(0,"",0,"",videos[titulo-1]->getCalificacion());
+            int nueva = v1+respuesta;
+            videos[titulo-1]->setCalificacion(nueva);
+
+            cout<<"Se actualizó la calificacion! "<<endl;
+            cout<<" "<<endl;
+            videos[titulo-1]->Mostrar();
+            cout<<" "<<endl;
+
+
             break;
-        case 0 : bandera = false;
+            }
+        case 0 :
+            bandera = false;
+            break;
 
     }
     }

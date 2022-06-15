@@ -30,3 +30,11 @@ float Video::getDuracion(){
 string Video::getNombre(){
     return nombre;
 }
+int Video::tipo(){
+    return 0;
+}
+void Video::setCalificacion(int c){
+
+    calificacion = c;
+
+}

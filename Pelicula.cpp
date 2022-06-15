@@ -16,3 +16,6 @@ void Pelicula:: Mostrar(){
 
 
 }
+int Pelicula::tipo(){
+    return 2;
+}
