@@ -25,14 +25,22 @@ int main(){
 
     while(bandera){
 
-    cout<<"1.Buscar videos por genero o calificación" <<endl;
-    cout<<"2.Buscar series por calificación"<<endl;
+    cout<<"1.Buscar videos por genero o calificacion" <<endl;
+    cout<<"2.Buscar series por calificacion"<<endl;
     cout<<"3.Buscar peliculas por calificacion"<<endl;
     cout<<"4.Calificar un video"<<endl;
     cout<<"0.Salir"<<endl;
     cin>>respuesta;
 
+    try{
+        if(respuesta < 0 || respuesta > 4){
+            throw respuesta;
+        }
+    }
+        catch(int r){
 
+            cout<<r<<" no es una respuesta valida"<<endl;
+        }
 
     switch(respuesta){
         case 1 :
@@ -71,6 +79,16 @@ int main(){
                 cout<<"Seleccione la calificacion a buscar: "<<endl;
                 cout<<"Rango: 1-5"<<endl;
                 cin>>respuesta;
+                try{
+                if(respuesta < 1 || respuesta > 5){
+                    throw respuesta;
+                    }
+                }
+                catch(int r){
+
+                cout<<r<<" no es una respuesta valida"<<endl;
+                }
+
                 for(int i=0;i<3;i++){
                     Video *actual = videos[i];
                     if(actual->getCalificacion() == respuesta && actual->tipo() == 1 ){
@@ -84,6 +102,15 @@ int main(){
                 cout<<"Seleccione la calificacion a buscar: "<<endl;
                 cout<<"Rango: 1-5"<<endl;
                 cin>>respuesta;
+                try{
+                if(respuesta < 1 || respuesta > 5){
+                    throw respuesta;
+                    }
+                }
+                catch(int r){
+
+                cout<<r<<" no es una respuesta valida"<<endl;
+                }
                 for(int i=0;i<3;i++){
                     Video *actual = videos[i];
                     if(actual->getCalificacion() == respuesta && actual->tipo() == 2){
@@ -112,7 +139,7 @@ int main(){
             int nueva = v1+respuesta;
             videos[titulo-1]->setCalificacion(nueva);
 
-            cout<<"Se actualizó la calificacion! "<<endl;
+            cout<<"Se actualizo la calificacion! "<<endl;
             cout<<" "<<endl;
             videos[titulo-1]->Mostrar();
             cout<<" "<<endl;
